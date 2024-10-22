@@ -15,7 +15,7 @@
     <!-- navbar start -->
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid" align="center">
-        <a class="navbar-brand" href="../dashboard.php">Perfumery Review</a>
+        <a class="navbar-brand" href="views/dashboard.php">Perfumery Review</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -45,7 +45,7 @@
                                 </div>
                             </div>
                         </div>
-                        <h5>Login / Register <a href="../dashboardafter.php">HERE</a></h5>
+                        <h5>Login / Register <a href="../../../views/dashboard">HERE</a></h5>
                     </div>
                 </div>
             </div>

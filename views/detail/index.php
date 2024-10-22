@@ -1,11 +1,11 @@
 <?php
-require 'connection.php';
+// require 'connection.php';
 
-$data = myquery("SELECT p.id, p.gambar_product, p.nama_product, k.kategori, b.nama_brand, n.nama_notes_parfume 
-FROM tb_product AS p 
-JOIN tb_kategori AS k ON p.kategori_product = k.id 
-JOIN tb_brand AS b ON p.brand_product = b.id 
-JOIN tb_notes_parfume AS n ON p.notes_parfume = n.id");
+// $data = myquery("SELECT p.id, p.gambar_product, p.nama_product, k.kategori, b.nama_brand, n.nama_notes_parfume 
+// FROM tb_product AS p 
+// JOIN tb_kategori AS k ON p.kategori_product = k.id 
+// JOIN tb_brand AS b ON p.brand_product = b.id 
+// JOIN tb_notes_parfume AS n ON p.notes_parfume = n.id");
 
 
 ?>
@@ -23,7 +23,7 @@ JOIN tb_notes_parfume AS n ON p.notes_parfume = n.id");
     <!-- navbar start -->
     <nav class="navbar navbar-expand-lg bg-body-tertiary mb-4">
         <div class="container-fluid">
-        <a class="navbar-brand" href="./dashboard.php">Perfumery Review</a>
+        <a class="navbar-brand" href="views/dashboard">Perfumery Review</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -34,7 +34,7 @@ JOIN tb_notes_parfume AS n ON p.notes_parfume = n.id");
                 Hi, Username
                 </a>
                 <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="./dashboard.php">Logout</a></li>
+                <li><a class="dropdown-item" href="../../views/dashboard">Logout</a></li>
                 </ul>
             </li>
         </ul>
@@ -46,7 +46,7 @@ JOIN tb_notes_parfume AS n ON p.notes_parfume = n.id");
         <div class="container-fluid">
             <div class="row mb-4" align="right">
                 <div class="col-12">
-                    <a href="./addnewreview.php" type="button" class="btn btn-primary">Add New Review</a>
+                    <a href="../../views/add-review" type="button" class="btn btn-primary">Add New Review</a>
                 </div>
             </div>
         </div>
@@ -54,7 +54,7 @@ JOIN tb_notes_parfume AS n ON p.notes_parfume = n.id");
             <div class="row">
                 <div class="col">
                 <div class="card" style="width: 18rem;">
-                    <img src="../asset/gambar/Mine_Luciddreams.png" class="card-img-top" alt="...">
+                    <img src="../../asset/gambar/Mine_Luciddreams.png" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">Mine - Lucid Dreams</h5>
                             <p class="card-text">Notes parfume : Musk</p>
