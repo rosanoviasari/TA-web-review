@@ -1,15 +1,11 @@
 <?php
 require 'connection.php';
 
-$data = myquery("SELECT p.id, p.gambar_product, p.nama_product, k.kategori_product, b.brand_product, n.notes_parfume 
-FROM tb_product as p
-JOIN 
-tb_kategori as k
-tb_brand as b
-tb_notes_parfume as n
-WHERE p.kategori_products = k.id
-p.brand_products = b.id
-p.notes_parfume = p.id");
+$data = myquery("SELECT p.id, p.gambar_product, p.nama_product, k.kategori, b.nama_brand, n.nama_notes_parfume 
+FROM tb_product AS p 
+JOIN tb_kategori AS k ON p.kategori_product = k.id 
+JOIN tb_brand AS b ON p.brand_product = b.id 
+JOIN tb_notes_parfume AS n ON p.notes_parfume = n.id");
 
 var_dump($data);
 
