@@ -1,13 +1,7 @@
 <?php
-// require 'connection.php';
+require '../../controller/DashboardController.php';
 
-// $data = myquery("SELECT p.id, p.gambar_product, p.nama_product, k.kategori, b.nama_brand, n.nama_notes_parfume 
-// FROM tb_product AS p 
-// JOIN tb_kategori AS k ON p.kategori_product = k.id 
-// JOIN tb_brand AS b ON p.brand_product = b.id 
-// JOIN tb_notes_parfume AS n ON p.notes_parfume = n.id");
-
-
+$data = getProduct();
 ?>
 
 
@@ -41,43 +35,27 @@
         <div id="carouselExample" class="carousel slide">
             <div class="carousel-inner">
                 <div class="carousel-item active" align="center">
+                <?php foreach ($data as $item):?>
                     <div class="card">
                         <div class="card-body">
                             <div class="row mb-4">
                                 <!-- ini baris pertama -->
                                 <div class="col-sm-4 col-lg-4">
                                     <div class="card" style="width: 18rem;">
-                                        <img src="../../asset/gambar/Alchemist_Galleria.png" class="card-img-top" alt="...">
+                                        <img src="../../<?php $item['gambar_product'];?>" class="card-img-top" alt="...">
                                         <div class="card-body">
-                                        <h5 class="card-title">Mine - Lucid Dreams</h5>
-                                        <p class="card-text">Notes parfume : Musk</p>
+                                        <h5 class="card-title"><?php $item['nama_product'];?></h5>
+                                        <p class="card-text" name="kategori" ><?php $item['kategori'];?></p>
+                                        <p class="card-text" name="brand"><?php $item['nama_brand'];?></p>
+                                        <p class="card-text" name="notes"><?php $item['nama_notes_parfume'];?></p>
                                         <a href="../../views/detail" class="btn btn-primary">Read Review</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4 col-lg-4">
-                                    <div class="card" style="width: 18rem;">
-                                        <img src="../../asset/gambar/BOHE_Scentofheaven.jpg" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                        <h5 class="card-title">BOHE Bali - Scent of Heaven</h5>
-                                        <p class="card-text">Notes parfume : Floral</p>
-                                        <a href="views/detail" class="btn btn-primary">Read Review</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4 col-lg-4">
-                                    <div class="card" style="width: 18rem;">
-                                        <img src="../../asset/gambar/HMNS_Alpha.jpg" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                        <h5 class="card-title">HMNS - Alpha</h5>
-                                        <p class="card-text">Notes parfume : Gourmand</p>
-                                        <a href="views/detail" class="btn btn-primary">Read Review</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>    
                     </div>
+                <?php endforeach;?>
                 </div>
                 <div class="carousel-item" align="center">
                     <div class="card">
