@@ -38,42 +38,44 @@
                             <h1 class="text-bold mb-4">Add New Product</h1>
                             <hr class="mt-4 mb-2">
                         </div>
+                        <form method="POST">
                         <div class="col-12 col-sm-6" align="center">
                             <div class="row">
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="inputGroup-sizing-default">Product Image</span>
-                                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                    <input type="text" class="form-control" name="gambar_product"aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                                 </div>
                             </div>
                             <div class="row" align="center">
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="inputGroup-sizing-default">Product Name</span>
-                                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                    <input type="text" class="form-control" name="nama_product" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                                 </div>
                             </div>
                             <div class="row" align="center">
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="inputGroup-sizing-default">Category</span>
-                                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                    <input type="text" class="form-control" name="kategori"aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                                 </div>
                             </div>
                             <div class="row" align="center">
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="inputGroup-sizing-default">Brands</span>
-                                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                    <input type="text" class="form-control" name="nama_brand"aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                                 </div>
                             </div>
                             <div class="row" align="center">
                                 <div class="input-group mb-3">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">Parfume Notess</span>
-                                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Parfume Notes</span>
+                                    <input type="text" class="form-control" name="nama_notes"aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                                 </div>
                             </div>
                         </div>
+                        </form>
                     </div>
                     <div class="row mb-4" align="left">
                     <div class="col-12">
-                        <a href="views/dashboard" type="button" class="btn btn-primary">Submit</a>
+                        <a href="views/dashboard" type="button" name="submit_product" class="btn btn-primary">Submit</a>
                     </div>
                     </div>
                 </div>

@@ -2,6 +2,7 @@
 require '../../controller/DashboardController.php';
 
 $data = getProduct();
+$firstCarousel = array_shift($data);
 ?>
 
 
@@ -34,29 +35,28 @@ $data = getProduct();
     <div class="content-section">
         <div id="carouselExample" class="carousel slide">
             <div class="carousel-inner">
-                <div class="carousel-item active" align="center">
-                <?php foreach ($data as $item):?>
+            <div class="carousel-item active" align="center">
                     <div class="card">
                         <div class="card-body">
                             <div class="row mb-4">
                                 <!-- ini baris pertama -->
                                 <div class="col-sm-4 col-lg-4">
                                     <div class="card" style="width: 18rem;">
-                                        <img src="../../<?php $item['gambar_product'];?>" class="card-img-top" alt="...">
+                                        <img src="../../asset/gambar/<?= $firstCarousel['gambar_product'];?>" class="card-img-top" alt="...">
                                         <div class="card-body">
-                                        <h5 class="card-title"><?php $item['nama_product'];?></h5>
-                                        <p class="card-text" name="kategori" ><?php $item['kategori'];?></p>
-                                        <p class="card-text" name="brand"><?php $item['nama_brand'];?></p>
-                                        <p class="card-text" name="notes"><?php $item['nama_notes_parfume'];?></p>
-                                        <a href="../../views/detail" class="btn btn-primary">Read Review</a>
+                                        <h5 class="card-title"><?= $firstCarousel['nama_product'];?></h5>
+                                        <p class="card-text" name="kategori" ><?= $firstCarousel['kategori'];?></p>
+                                        <p class="card-text" name="brand"><?= $firstCarousel['nama_brand'];?></p>
+                                        <p class="card-text" name="notes"><?= $firstCarousel['nama_notes_parfume'];?></p>
+                                        <a href="../../views/detail?id=<?=$firstCarousel['id'];?>" class="btn btn-primary">Read Review</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>    
                     </div>
-                <?php endforeach;?>
                 </div>
+            <?php foreach ($data as $item):?>
                 <div class="carousel-item" align="center">
                     <div class="card">
                         <div class="card-body">
@@ -64,77 +64,21 @@ $data = getProduct();
                                 <!-- ini baris pertama -->
                                 <div class="col-sm-4 col-lg-4">
                                     <div class="card" style="width: 18rem;">
-                                        <img src="../../asset/gambar/Mine_Luciddreams.png" class="card-img-top" alt="...">
+                                        <img src="../../asset/gambar/<?= $item['gambar_product'];?>" class="card-img-top" alt="...">
                                         <div class="card-body">
-                                        <h5 class="card-title">Mine - Lucid Dreams</h5>
-                                        <p class="card-text">Notes parfume : Musk</p>
-                                        <a href="./detail.html" class="btn btn-primary">Read Review</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4 col-lg-4">
-                                    <div class="card" style="width: 18rem;">
-                                        <img src="../../asset/gambar/BOHE_Scentofheaven.jpg" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                        <h5 class="card-title">Belajar Coding di SMAN 20 Bandung</h5>
-                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                        <a href="./detail.html" class="btn btn-primary">Read Review</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4 col-lg-4">
-                                    <div class="card" style="width: 18rem;">
-                                        <img src="../../asset/gambar/HMNS_Alpha.jpg" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                        <h5 class="card-title">Belajar Coding di SMAN 20 Bandung</h5>
-                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                        <a href="./detail.html" class="btn btn-primary">Read Review</a>
+                                        <h5 class="card-title"><?= $item['nama_product'];?></h5>
+                                        <p class="card-text" name="kategori" ><?= $item['kategori'];?></p>
+                                        <p class="card-text" name="brand"><?= $item['nama_brand'];?></p>
+                                        <p class="card-text" name="notes"><?= $item['nama_notes_parfume'];?></p>
+                                        <a href="../../views/detail?id=<?=$item['id'];?>" class="btn btn-primary">Read Review</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>    
                     </div>
                 </div>
-                <div class="carousel-item" align="center">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="row mb-4">
-                                <!-- ini baris pertama -->
-                                <div class="col-sm-4 col-lg-4">
-                                    <div class="card" style="width: 18rem;">
-                                        <img src="../../asset/gambar/Mine_Luciddreams.png" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                        <h5 class="card-title">Mine - Lucid Dreams</h5>
-                                        <p class="card-text">Notes parfume : Musk</p>
-                                        <a href="./detail.html" class="btn btn-primary">Read Review</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4 col-lg-4">
-                                    <div class="card" style="width: 18rem;">
-                                        <img src="../../asset/gambar/BOHE_Scentofheaven.jpg" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                        <h5 class="card-title">Belajar Coding di SMAN 20 Bandung</h5>
-                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                        <a href="./detail.html" class="btn btn-primary">Read Review</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4 col-lg-4">
-                                    <div class="card" style="width: 18rem;">
-                                        <img src="../../asset/gambar/HMNS_Alpha.jpg" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                        <h5 class="card-title">Belajar Coding di SMAN 20 Bandung</h5>
-                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                        <a href="./detail.html" class="btn btn-primary">Read Review</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <?php endforeach;?>
             </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>

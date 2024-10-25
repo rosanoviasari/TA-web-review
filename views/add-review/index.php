@@ -29,6 +29,9 @@
                     <a href="../../views/dashboard" type="button" class="btn btn-primary">Back</a>
                 </div>
             </div>
+            <?php if(isset($err)):?>
+                <p><?= $err; ?></p>
+            <?php endif; ?>
         </div>
         <div class="container py-3">
             <div class="card">
@@ -38,22 +41,30 @@
                             <h1 class="text-bold mb-4">Add New Review</h1>
                             <hr class="mt-4 mb-2">
                         </div>
+                        <form method="POST">
                         <div class="col-12 col-sm-6" align="center">
                             <div class="row">
                                 <div class="input-group mb-3">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">Product Name</span>
-                                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                <span for="product" class="input-group-text" id="inputGroup-sizing-default">Product Name</span>
+                                <select class="form-select" name="select_product" class="form-control" name="txt_product" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                    <?php foreach($products as $option): ?>
+                                        <option value="<?= $option['product']?>">
+                                            <?= $option['product'];?>
+                                        </option>
+                                    <?php endforeach; ?>
+                                </select>
                                 </div>
                             </div>
                             <div class="input-group mb-3">
                                 <span class="input-group-text">Review</span>
-                                <textarea class="form-control" aria-label="With textarea"></textarea>
+                                <textarea class="form-control" name="txt_review" aria-label="With textarea"></textarea>
                             </div>
                         </div>
                     </div>
                     <div class="row mb-4" align="left">
+                    </form>
                     <div class="col-12">
-                        <a href="views/dashboard" type="button" class="btn btn-primary">Submit</a>
+                        <a href="views/dashboard" type="button" name="submit_new_review" class="btn btn-primary">Submit</a>
                     </div>
                     </div>
                 </div>

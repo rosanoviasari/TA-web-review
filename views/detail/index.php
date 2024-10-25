@@ -1,5 +1,9 @@
 <?php
-// require 'connection.php';
+require '../../controller/DetailController.php';
+
+$id = isset($_GET['id']) ? $_GET['id'] : null;
+$products = getProductById($id);
+$review = getReviewByProductId($id);
 
 // $data = myquery("SELECT p.id, p.gambar_product, p.nama_product, k.kategori, b.nama_brand, n.nama_notes_parfume 
 // FROM tb_product AS p 
@@ -23,7 +27,7 @@
     <!-- navbar start -->
     <nav class="navbar navbar-expand-lg bg-body-tertiary mb-4">
         <div class="container-fluid">
-        <a class="navbar-brand" href="views/dashboard">Perfumery Review</a>
+        <a class="navbar-brand" href="dashboard">Perfumery Review</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -54,66 +58,23 @@
             <div class="row">
                 <div class="col">
                 <div class="card" style="width: 18rem;">
-                    <img src="../../asset/gambar/Mine_Luciddreams.png" class="card-img-top" alt="...">
+                    <img src="../../<?= $products['gambar_product'];?>" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title">Mine - Lucid Dreams</h5>
-                            <p class="card-text">Notes parfume : Musk</p>
+                            <h5 class="card-title"><?= $products['nama_brand'];?></h5>
+                            <h5 class="card-title"><?= $products['nama_product'];?></h5>
+                            <p class="card-text">Notes parfume : <?= $products['nama_notes_parfume'];?></p>
                         </div>
                 </div>
                 </div>
             <div class="col">
-            <div id="carouselExample" class="carousel slide">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
+                <?php foreach ($review as $r): ?>
                         <div class="card mb-4">
                             <div class="card-body" align="left">
-                                <h6>Username</h6>
-                                <p>Review</p>
+                                <h6><?= $r['username'];?></h6>
+                                <p><?= $r['review'];?></p>
                             </div>
                         </div>
-                        <div class="card mb-4">
-                            <div class="card-body" align="left">
-                                <h6>Username</h6>
-                                <p>Review</p>
-                            </div>
-                        </div>
-                        <div class="card mb-4">
-                            <div class="card-body" align="left">
-                                <h6>Username</h6>
-                                <p>Review</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                    <div class="card mb-4">
-                            <div class="card-body" align="left">
-                                <h6>Username</h6>
-                                <p>Review</p>
-                            </div>
-                        </div>
-                        <div class="card mb-4">
-                            <div class="card-body" align="left">
-                                <h6>Username</h6>
-                                <p>Review</p>
-                            </div>
-                        </div>
-                        <div class="card mb-4">
-                            <div class="card-body" align="left">
-                                <h6>Username</h6>
-                                <p>Review</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
-                </div>
+                <?php endforeach;?>
             </div>
         </div>
     </div>
