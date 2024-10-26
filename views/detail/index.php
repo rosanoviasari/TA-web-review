@@ -1,16 +1,8 @@
 <?php
 require '../../controller/DetailController.php';
 
-$id = isset($_GET['id']) ? $_GET['id'] : null;
-$products = getProductById($id);
-$review = getReviewByProductId($id);
 
-// $data = myquery("SELECT p.id, p.gambar_product, p.nama_product, k.kategori, b.nama_brand, n.nama_notes_parfume 
-// FROM tb_product AS p 
-// JOIN tb_kategori AS k ON p.kategori_product = k.id 
-// JOIN tb_brand AS b ON p.brand_product = b.id 
-// JOIN tb_notes_parfume AS n ON p.notes_parfume = n.id");
-
+$dataReview = getReviewById($id);
 
 ?>
 
@@ -58,16 +50,17 @@ $review = getReviewByProductId($id);
             <div class="row">
                 <div class="col">
                 <div class="card" style="width: 18rem;">
-                    <img src="../../<?= $products['gambar_product'];?>" class="card-img-top" alt="...">
+                    <img src="../../<?= $dataReview['gambar_product'];?>" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title"><?= $products['nama_brand'];?></h5>
-                            <h5 class="card-title"><?= $products['nama_product'];?></h5>
-                            <p class="card-text">Notes parfume : <?= $products['nama_notes_parfume'];?></p>
+                            <h5 class="card-title"><?= $dataReview['id'];?></h5>
+                            <h5 class="card-title"><?= $dataReview['nama_brand'];?></h5>
+                            <h5 class="card-title"><?= $dataReview['nama_product'];?></h5>
+                            <p class="card-text">Notes parfume : <?= $dataReview['nama_notes_parfume'];?></p>
                         </div>
                 </div>
                 </div>
             <div class="col">
-                <?php foreach ($review as $r): ?>
+                <?php foreach ($dataReview as $r): ?>
                         <div class="card mb-4">
                             <div class="card-body" align="left">
                                 <h6><?= $r['username'];?></h6>
