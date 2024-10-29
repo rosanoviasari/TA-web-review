@@ -34,14 +34,14 @@ $firstCarousel = array_shift($data);
     <!-- navbar end -->
     <div class="content-section">
         <div id="carouselExample" class="carousel slide">
-            <div class="carousel-inner">
+            <div class="carousel-inner" align="center">
             <div class="carousel-item active" align="center">
                     <div class="card">
                         <div class="card-body">
-                            <div class="row mb-4">
+                            <div class="row mb-4" align="center">
                                 <!-- ini baris pertama -->
                                 <div class="col-sm-4 col-lg-4">
-                                    <div class="card" style="width: 18rem;">
+                                    <div class="card" style="width: 18rem;" align="center">
                                         <img src="../../asset/gambar/<?= $firstCarousel['gambar_product'];?>" class="card-img-top" alt="...">
                                         <div class="card-body">
                                         <h5 class="card-title"><?= $firstCarousel['nama_product'];?></h5>

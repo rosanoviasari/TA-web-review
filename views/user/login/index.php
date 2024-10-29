@@ -1,5 +1,5 @@
 <?php
-
+require '../../../controller/LoginController.php';
 
 ?>
 
@@ -15,7 +15,7 @@
     <!-- navbar start -->
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid" align="center">
-        <a class="navbar-brand" href="views/dashboard.php">Perfumery Review</a>
+        <a class="navbar-brand" href="../../views/dashboard">Perfumery Review</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -30,22 +30,29 @@
                             <h1 class="text-bold mb-4">Login / Register</h1>
                             <hr class="mt-4 mb-2">
                         </div>
+                        <form method="POST">
                         <div class="col-12 col-sm-6" align="center">
                             <!-- About -->
                             <div class="row">
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="inputGroup-sizing-default">Username</span>
-                                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                    <input type="text" name="txt_username" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                                 </div>
                             </div>
                             <div class="row" align="center">
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="inputGroup-sizing-default">Password</span>
-                                    <input type="password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                    <input type="password" name="txt_password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                                 </div>
                             </div>
                         </div>
-                        <h5>Login / Register <a href="../../../views/dashboard">HERE</a></h5>
+                        <div>
+                        <h5>Login / Register 
+                            <a href="../../../controller/LoginController.php?action=login&id=<?=$row['id'];?>" type="submit" name="submit_login" class="btn btn-primary">HERE</a>
+                        </h5>    
+                        </div>
+                        </form>
+                        <?php if (isset($err)) echo "<p>$err</p>"; ?>
                     </div>
                 </div>
             </div>
