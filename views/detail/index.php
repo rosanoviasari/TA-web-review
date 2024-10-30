@@ -1,9 +1,8 @@
 <?php
 require '../../controller/DetailController.php';
 
-
-$dataReview = getReviewById($id);
-
+$dataReview = getReviewById();
+$dataProductReview = getProductById();
 ?>
 
 
@@ -50,12 +49,12 @@ $dataReview = getReviewById($id);
             <div class="row">
                 <div class="col">
                 <div class="card" style="width: 18rem;">
-                    <img src="../../<?= $dataReview['gambar_product'];?>" class="card-img-top" alt="...">
+                    <img src="../../<?= $dataProductReview['gambar_product'];?>" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title"><?= $dataReview['id'];?></h5>
-                            <h5 class="card-title"><?= $dataReview['nama_brand'];?></h5>
-                            <h5 class="card-title"><?= $dataReview['nama_product'];?></h5>
-                            <p class="card-text">Notes parfume : <?= $dataReview['nama_notes_parfume'];?></p>
+                            <h5 class="card-title"><?= $dataProductReview['id'];?></h5>
+                            <h5 class="card-title"><?= $dataProductReview['nama_brand'];?></h5>
+                            <h5 class="card-title"><?= $dataProductReview['product'];?></h5>
+                            <p class="card-text">Notes parfume : <?= $dataProductReview['nama_notes_parfume'];?></p>
                         </div>
                 </div>
                 </div>

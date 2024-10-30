@@ -1,5 +1,5 @@
 <?php
-require '../../../database/connection.php';
+require_once '../../../database/connection.php';
 session_start();
 
 if (isset($_POST['submit_login'])) {
@@ -39,7 +39,7 @@ if (isset($_POST['submit_login'])){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login / Register</title>
+    <title>Login</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 <body>
@@ -58,7 +58,7 @@ if (isset($_POST['submit_login'])){
                 <div class="card-body" align="center">
                     <div class="row">
                         <div class="col-sm-12 mt-4 mb-3" align="center">
-                            <h1 class="text-bold mb-4">Login / Register</h1>
+                            <h1 class="text-bold mb-4">Login</h1>
                             <hr class="mt-4 mb-2">
                         </div>
                         <form method="POST">

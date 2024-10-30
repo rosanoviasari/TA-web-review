@@ -1,7 +1,8 @@
 <?php
 require '../../controller/DashboardController.php';
 session_start();
-
+$isLogin = isset($_SESSION['username']); 
+if($isLogin){ $username = $_SESSION['username'];}
 $data = getProduct();
 $firstCarousel = array_shift($data);
 
@@ -28,7 +29,7 @@ $firstCarousel = array_shift($data);
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-                <a class="nav-link" href="../../views/user/login/index.php">Login</a>
+                <a class="nav-link" href="../../views/user/login/index.php">hi <?= $username?>!</a>
             </li>
             </ul>
         </div>
