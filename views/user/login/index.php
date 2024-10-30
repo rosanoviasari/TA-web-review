@@ -1,6 +1,37 @@
 <?php
-require '../../../controller/LoginController.php';
+require '../../../database/connection.php';
+session_start();
 
+if (isset($_POST['submit_login'])) {
+    login();
+}
+
+function validateUser($username, $password) {
+    $query = "SELECT username, password FROM tb_user WHERE username = '$username'"; 
+    $data = myquery($query);
+    if (isset($data) && isset($data[0]) && $data[0]['password'] === $password) {
+        return true; 
+    } else {
+        return false;
+    }
+}
+
+
+
+function login(){
+if (isset($_POST['submit_login'])){
+    $username = $_POST['txt_username'];
+    $password = $_POST['txt_password'];   
+    if (validateUser($username,$password)){
+        $_SESSION['username'] = $username;
+        header ('Location: ../../dashboard');
+        exit();
+    }else{
+        $err = "Password atau username salah";
+    }
+    }
+    
+}
 ?>
 
 <!DOCTYPE html>
@@ -31,26 +62,28 @@ require '../../../controller/LoginController.php';
                             <hr class="mt-4 mb-2">
                         </div>
                         <form method="POST">
-                        <div class="col-12 col-sm-6" align="center">
-                            <!-- About -->
-                            <div class="row">
-                                <div class="input-group mb-3">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">Username</span>
-                                    <input type="text" name="txt_username" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                            <div class="col-12 col-sm-6" align="center">
+                                <!-- Username Field -->
+                                <div class="row">
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text" id="inputGroup-sizing-default">Username</span>
+                                        <input type="text" name="txt_username" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
+                                    </div>
+                                </div>
+
+                                <!-- Password Field -->
+                                <div class="row" align="center">
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text" id="inputGroup-sizing-default">Password</span>
+                                        <input type="password" name="txt_password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="row" align="center">
-                                <div class="input-group mb-3">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">Password</span>
-                                    <input type="password" name="txt_password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                                </div>
+
+                            <!-- Submit Button -->
+                            <div align="center">
+                                <button type="submit" name="submit_login" class="btn btn-primary">Login</button>
                             </div>
-                        </div>
-                        <div>
-                        <h5>Login / Register 
-                            <a href="../../../controller/LoginController.php?action=login&id=<?=$row['id'];?>" type="submit" name="submit_login" class="btn btn-primary">HERE</a>
-                        </h5>    
-                        </div>
                         </form>
                         <?php if (isset($err)) echo "<p>$err</p>"; ?>
                     </div>

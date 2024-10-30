@@ -1,8 +1,11 @@
 <?php
 require '../../controller/DashboardController.php';
+session_start();
 
 $data = getProduct();
 $firstCarousel = array_shift($data);
+
+//var_dump ($_SESSION);
 ?>
 
 
@@ -25,7 +28,7 @@ $firstCarousel = array_shift($data);
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-                <a class="nav-link" href="../../views/user/login">Login</a>
+                <a class="nav-link" href="../../views/user/login/index.php">Login</a>
             </li>
             </ul>
         </div>
