@@ -10,5 +10,9 @@ function getProductReview(){
     $dataProductReview = getProductById();
     return $dataProductReview;
 }
+function getUpdateProduct($kategori,$notes){
+    $dataUpdateProduct = updateProduct();
+    return $dataUpdateProduct;
+}
 
 ?>

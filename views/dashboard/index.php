@@ -6,6 +6,8 @@ if($isLogin){ $username = $_SESSION['username'];}
 $data = getProduct();
 $firstCarousel = array_shift($data);
 
+
+
 //var_dump ($_SESSION);
 ?>
 
@@ -28,10 +30,12 @@ $firstCarousel = array_shift($data);
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
+            <li class="nav-item dropdown">
                 <a class="nav-link" href="../../views/user/login/index.php">hi <?= $username?>!</a>
+                <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="../../views/dashboard">Logout</a></li>
+                </ul>
             </li>
-            </ul>
         </div>
         </div>
     </nav>

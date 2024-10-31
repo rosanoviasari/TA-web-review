@@ -11,4 +11,8 @@ function getProductReview(){
     $dataProductReview = getProductById();
     return $dataProductReview;
 }
+function deleteReview(){
+    $deleteReview = deleteReview();
+    return $deleteReview;
+}
 ?>

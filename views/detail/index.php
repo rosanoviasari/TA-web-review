@@ -5,6 +5,7 @@ if (isset($_GET['id'])) {
     }
 $dataReview = getReviewById($id);
 $dataProductReview = getProductById($id);
+$deleteReview = deleteReviewById($id);
 ?>
 
 
@@ -41,6 +42,9 @@ $dataProductReview = getProductById($id);
     <!-- navbar end -->
     <div class="content-section">
         <div class="container-fluid">
+                <div class="col-12">
+                    <a href="../views/dashboard" type="button" class="btn btn-primary">Back</a>
+                </div>
             <div class="row mb-4" align="right">
                 <div class="col-12">
                 <?php foreach ($dataProductReview as $p): ?>
@@ -69,10 +73,13 @@ $dataProductReview = getProductById($id);
                             <div class="card-body" align="left">
                                 <h6><?= $r['username'];?></h6>
                                 <p><?= $r['review'];?></p>
-                                <a href="../../views/add-review?id=<?=$p['id'];?>" type="button" class="btn btn-danger">Delete Review</a>
+                                <a href="../../views/detail?id=<?=$r['id'];?>" type="button" class="btn btn-danger">Delete Review</a>
                             </div>
                         </div>
                 <?php endforeach;?>
+                <div>
+                    
+                </div>
             </div>
         </div>
     </div>

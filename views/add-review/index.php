@@ -45,9 +45,11 @@ if (isset($_POST['submit_new_review'])) {
     <div class="content-section">
     <div class="container-fluid">
             <div class="row mb-4" align="left">
+            <?php foreach ($dataProductReview as $p): ?>
                 <div class="col-12">
-                    <a href="../views/detail?id=<?=$item['id'];?>" type="button" class="btn btn-primary">Back</a>
+                    <a href="../views/detail?id=<?=$p['id'];?>" type="button" class="btn btn-primary">Back</a>
                 </div>
+            <?php endforeach; ?>
             </div>
             <?php if(isset($err)):?>
                 <p><?= $err; ?></p>

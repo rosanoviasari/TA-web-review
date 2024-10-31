@@ -20,4 +20,9 @@ function insertReview($product, $username, $review) {
     return $res;
 }
 
+function deleteReviewById($id){
+    $query = "DELETE FROM tb_review WHERE tb_review.id = $id";
+    $res = myquery($query);
+    return $res;
+}
 ?>

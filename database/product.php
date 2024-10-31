@@ -42,10 +42,10 @@ function getNotesFromDatabase(){
     return $res;
 }
 
-function updateProduct(){
+function updateProduct($kategori,$notes){
     $query = "UPDATE tb_product SET kategori_product = (SELECT id FROM tb_kategori WHERE kategori = '$kategori'), 
         Notes_Parfume = (SELECT id FROM tb_notes_parfume WHERE nama_notes_parfume = '$notes')
-        WHERE id = $dataProductReview";
+        WHERE id = $id";
     $res = myquery($query);
     return $res;
 }

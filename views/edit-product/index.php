@@ -1,11 +1,12 @@
 <?php
-require '../../controller/EditproductController.php';
+require_once '../../controller/EditproductController.php';
 if (isset($_GET['id'])) {
     $id = (int) $_GET['id'];
     }
 $dataProductReview = getProductById($id);
 $kategori = getKategoriFromDatabase();
 $notes = getNotesFromDatabase();
+$dataUpdateProduct = updateProduct($kategori,$notes);
 ?>
 
 <!DOCTYPE html>
@@ -30,8 +31,9 @@ $notes = getNotesFromDatabase();
     <div class="content-section">
     <div class="container-fluid">
             <div class="row mb-4" align="left">
+            <?php foreach ($dataProductReview as $p): ?>
                 <div class="col-12">
-                    <a href="views/dashboard" type="button" class="btn btn-primary">Back</a>
+                    <a href="../views/detail?id=<?=$p['id'];?>" type="button" class="btn btn-primary">Back</a>
                 </div>
             </div>
         </div>
@@ -44,12 +46,10 @@ $notes = getNotesFromDatabase();
                             <hr class="mt-4 mb-2">
                         </div>
                         <form method="POST">
-                        <?php foreach ($dataProductReview as $p): ?>
                         <div class="col-12 col-sm-6" align="center">
                             <div class="row">
                                 <div class="input-group mb-3">
                                     <img src="../../asset/gambar/<?= $p['gambar_product'];?>" class="card-img-top" alt="...">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">Product Image</span>
                                 </div>
                             </div>
                             <div class="row" align="center">
