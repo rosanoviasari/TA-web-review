@@ -1,6 +1,25 @@
 <?php
 require '../../controller/AddreviewController.php';
+if (isset($_GET['id'])) {
+    $id = (int) $_GET['id'];
+    }
+$dataProductReview = getProductById($id);
 
+if (isset($_POST['submit_new_review'])) {
+    
+    $product = $_POST['product'];
+    $username = $_SESSION['username'];
+    $review = $_POST['txt_review'];
+
+    
+    $res = insertReview($product, $username, $review);
+
+    if ($res) {
+        echo "Review berhasil ditambahkan.";
+    } else {
+        echo "Gagal menambahkan review.";
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -42,21 +61,23 @@ require '../../controller/AddreviewController.php';
                             <hr class="mt-4 mb-2">
                         </div>
                         <form method="POST">
-                        <div class="col-12 col-sm-6" align="center">
-                            <div class="row">
-                                <div class="input-group mb-3">
-                                <span for="product" class="input-group-text" id="inputGroup-sizing-default">Product Name</span>
-                                <select class="form-select" name="select_product" class="form-control" name="txt_product" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                                    <?php foreach($products as $option): ?>
-                                        <option value="<?= $option['product']?>">
-                                            <?= $option['product'];?>
-                                        </option>
-                                    <?php endforeach; ?>
-                                </select>
-                                </div>
+                        <div class="col-6 col-sm-6" align="center">
+                        <div class="container text-center mb-4">
+                        <div class="row">
+                            <div class="col">
+                            <div class="card" style="width: 18rem;">
+                            <?php foreach ($dataProductReview as $p): ?>
+                                <img src="../../asset/gambar/<?= $p['gambar_product'];?>" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h5 class="card-title"><?= $p['kategori'];?></h5>
+                                        <h5 class="card-title"><?= $p['nama_brand'];?></h5>
+                                        <h5 class="card-title"><?= $p['nama_product'];?></h5>
+                                        <p class="card-text">Notes : <?= $p['nama_notes_parfume'];?></p>
+                                    </div>
                             </div>
-                            <div class="input-group mb-3">
-                                <span class="input-group-text">Review</span>
+                            </div>    
+                            <div class="col-6" align="center">
+                                <span class="input-group-text" align="center">Review</span>
                                 <textarea class="form-control" name="txt_review" aria-label="With textarea"></textarea>
                             </div>
                         </div>
@@ -64,8 +85,10 @@ require '../../controller/AddreviewController.php';
                     <div class="row mb-4" align="left">
                     </form>
                     <div class="col-12">
-                        <a href="views/dashboard" type="button" name="submit_new_review" class="btn btn-primary">Submit</a>
+                        <button type="submit" name="submit_new_review" class="btn btn-primary">Submit</button>
+                        <!-- <a href="../views/detail?id=<?=$p['id'];?>" type="button" name="submit_new_review" class="btn btn-primary">Submit</a> -->
                     </div>
+                    <?php endforeach;?>
                     </div>
                 </div>
             </div>

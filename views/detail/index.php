@@ -1,8 +1,10 @@
 <?php
 require '../../controller/DetailController.php';
-
-$dataReview = getReviewById();
-$dataProductReview = getProductById();
+if (isset($_GET['id'])) {
+    $id = (int) $_GET['id'];
+    }
+$dataReview = getReviewById($id);
+$dataProductReview = getProductById($id);
 ?>
 
 
@@ -41,7 +43,8 @@ $dataProductReview = getProductById();
         <div class="container-fluid">
             <div class="row mb-4" align="right">
                 <div class="col-12">
-                    <a href="../../views/add-review" type="button" class="btn btn-primary">Add New Review</a>
+                <?php foreach ($dataProductReview as $p): ?>
+                    <a href="../../views/add-review?id=<?=$p['id'];?>" type="button" class="btn btn-primary">Add New Review</a>
                 </div>
             </div>
         </div>
@@ -49,13 +52,14 @@ $dataProductReview = getProductById();
             <div class="row">
                 <div class="col">
                 <div class="card" style="width: 18rem;">
-                    <img src="../../<?= $dataProductReview['gambar_product'];?>" class="card-img-top" alt="...">
+                    <img src="../../asset/gambar/<?= $p['gambar_product'];?>" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title"><?= $dataProductReview['id'];?></h5>
-                            <h5 class="card-title"><?= $dataProductReview['nama_brand'];?></h5>
-                            <h5 class="card-title"><?= $dataProductReview['product'];?></h5>
-                            <p class="card-text">Notes parfume : <?= $dataProductReview['nama_notes_parfume'];?></p>
+                            <h5 class="card-title"><?= $p['kategori'];?></h5>
+                            <h5 class="card-title"><?= $p['nama_brand'];?></h5>
+                            <h5 class="card-title"><?= $p['nama_product'];?></h5>
+                            <p class="card-text">Notes : <?= $p['nama_notes_parfume'];?></p>
                         </div>
+                    <?php endforeach;?>
                 </div>
                 </div>
             <div class="col">
