@@ -58,6 +58,7 @@ $dataProductReview = getProductById($id);
                             <h5 class="card-title"><?= $p['nama_brand'];?></h5>
                             <h5 class="card-title"><?= $p['nama_product'];?></h5>
                             <p class="card-text">Notes : <?= $p['nama_notes_parfume'];?></p>
+                            <a href="../../views/edit-product?id=<?=$p['id'];?>" type="button" class="btn btn-primary">Edit product</a>
                         </div>
                     <?php endforeach;?>
                 </div>
@@ -68,6 +69,7 @@ $dataProductReview = getProductById($id);
                             <div class="card-body" align="left">
                                 <h6><?= $r['username'];?></h6>
                                 <p><?= $r['review'];?></p>
+                                <a href="../../views/add-review?id=<?=$p['id'];?>" type="button" class="btn btn-danger">Delete Review</a>
                             </div>
                         </div>
                 <?php endforeach;?>

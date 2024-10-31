@@ -1,5 +1,6 @@
 <?php
 require '../../controller/AddreviewController.php';
+session_start();
 if (isset($_GET['id'])) {
     $id = (int) $_GET['id'];
     }
@@ -7,7 +8,7 @@ $dataProductReview = getProductById($id);
 
 if (isset($_POST['submit_new_review'])) {
     
-    $product = $_POST['product'];
+    $product = $_POST['id'];
     $username = $_SESSION['username'];
     $review = $_POST['txt_review'];
 
@@ -45,7 +46,7 @@ if (isset($_POST['submit_new_review'])) {
     <div class="container-fluid">
             <div class="row mb-4" align="left">
                 <div class="col-12">
-                    <a href="../../views/dashboard" type="button" class="btn btn-primary">Back</a>
+                    <a href="../views/detail?id=<?=$item['id'];?>" type="button" class="btn btn-primary">Back</a>
                 </div>
             </div>
             <?php if(isset($err)):?>
@@ -73,6 +74,7 @@ if (isset($_POST['submit_new_review'])) {
                                         <h5 class="card-title"><?= $p['nama_brand'];?></h5>
                                         <h5 class="card-title"><?= $p['nama_product'];?></h5>
                                         <p class="card-text">Notes : <?= $p['nama_notes_parfume'];?></p>
+                                        <input type="hidden" name="id" value="<?= $p['id']; ?>">
                                     </div>
                             </div>
                             </div>    

@@ -30,4 +30,23 @@ function getProductById($id){
     return $res;
 }
 
+function getKategoriFromDatabase(){
+    $query = "SELECT tb_kategori.id as id, tb_kategori.kategori as kategori FROM tb_kategori";
+    $res = myquery($query);
+    return $res;
+}
+
+function getNotesFromDatabase(){
+    $query = "SELECT tb_notes_parfume.id as id, tb_notes_parfume.nama_notes_parfume as notes_parfume FROM tb_notes_parfume";
+    $res = myquery($query);
+    return $res;
+}
+
+function updateProduct(){
+    $query = "UPDATE tb_product SET kategori_product = (SELECT id FROM tb_kategori WHERE kategori = '$kategori'), 
+        Notes_Parfume = (SELECT id FROM tb_notes_parfume WHERE nama_notes_parfume = '$notes')
+        WHERE id = $dataProductReview";
+    $res = myquery($query);
+    return $res;
+}
 ?>

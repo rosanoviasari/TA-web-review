@@ -13,11 +13,18 @@ function myquery($query){
     $connection = mysqli_connect($hostname, $user, $password, $db_name);
 
     $res = mysqli_query($connection, $query);
-    $returns = [];
-    while($data = mysqli_fetch_assoc($res)){
-        $returns[] = $data;
+    if (strpos($query, 'SELECT') === 0) {
+        $returns = [];
+        while ($data = mysqli_fetch_assoc($res)) {
+            $returns[] = $data;
+        }
+        return $returns; 
+    } elseif ($res) {
+        return true;
+    } else {
+        echo "Error: " . mysqli_error($connection);
+        return false;
     }
-    return $returns;
 }
 
 ?>

@@ -1,7 +1,11 @@
 <?php
-require '../../controller/AddproductController.php';
-
-
+require '../../controller/EditproductController.php';
+if (isset($_GET['id'])) {
+    $id = (int) $_GET['id'];
+    }
+$dataProductReview = getProductById($id);
+$kategori = getKategoriFromDatabase();
+$notes = getNotesFromDatabase();
 ?>
 
 <!DOCTYPE html>
@@ -36,47 +40,61 @@ require '../../controller/AddproductController.php';
                 <div class="card-body" align="center">
                     <div class="row">
                         <div class="col-sm-12 mt-4 mb-3" align="center">
-                            <h1 class="text-bold mb-4">Add New Product</h1>
+                            <h1 class="text-bold mb-4">Edit Product</h1>
                             <hr class="mt-4 mb-2">
                         </div>
                         <form method="POST">
+                        <?php foreach ($dataProductReview as $p): ?>
                         <div class="col-12 col-sm-6" align="center">
                             <div class="row">
                                 <div class="input-group mb-3">
+                                    <img src="../../asset/gambar/<?= $p['gambar_product'];?>" class="card-img-top" alt="...">
                                     <span class="input-group-text" id="inputGroup-sizing-default">Product Image</span>
-                                    <input type="text" class="form-control" name="gambar_product"aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                                 </div>
                             </div>
                             <div class="row" align="center">
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="inputGroup-sizing-default">Product Name</span>
-                                    <input type="text" class="form-control" name="nama_product" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                    <input type="text" class="form-control" name="nama_product" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" value="<?= $p['nama_product'];?>">
                                 </div>
                             </div>
                             <div class="row" align="center">
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="inputGroup-sizing-default">Category</span>
-                                    <input type="text" class="form-control" name="kategori"aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                    <select class="form-select" name="select_kategori">
+                                    <?php foreach($kategori as $option): ?>
+                                        <option value="<?= $option['id']?>">
+                                            <?= $option['kategori'];?>
+                                        </option>
+                                    <?php endforeach; ?>
+                                    </select>
                                 </div>
                             </div>
                             <div class="row" align="center">
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="inputGroup-sizing-default">Brands</span>
-                                    <input type="text" class="form-control" name="nama_brand"aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                    <input type="text" class="form-control" name="nama_brand"aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" value="<?= $p['nama_brand'];?>">
                                 </div>
                             </div>
                             <div class="row" align="center">
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="inputGroup-sizing-default">Parfume Notes</span>
-                                    <input type="text" class="form-control" name="nama_notes"aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                    <select class="form-select" name="select_kategori">
+                                    <?php foreach($notes as $option): ?>
+                                        <option value="<?= $option['id']?>">
+                                            <?= $option['notes_parfume'];?>
+                                        </option>
+                                    <?php endforeach; ?>
+                                </select>
                                 </div>
                             </div>
                         </div>
                         </form>
+                        <?php endforeach; ?>
                     </div>
                     <div class="row mb-4" align="left">
                     <div class="col-12">
-                        <a href="views/dashboard" type="button" name="submit_product" class="btn btn-primary">Submit</a>
+                        <a href="../views/dashboard" type="button" name="submit_product" class="btn btn-primary">Submit</a>
                     </div>
                     </div>
                 </div>
