@@ -24,13 +24,19 @@ if (isset($_POST['submit_login'])){
     $password = $_POST['txt_password'];   
     if (validateUser($username,$password)){
         $_SESSION['username'] = $username;
-        header ('Location: ../../dashboard');
+        header ('Location: ../../views/dashboard');
         exit();
     }else{
         $err = "Password atau username salah";
     }
     }
     
+}
+function logout(){
+    session_destroy();
+}
+if (isset($_GET['action']) && $_GET['action'] === 'logout') {
+    logout();
 }
 ?>
 
@@ -41,12 +47,15 @@ if (isset($_POST['submit_login'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Lavishly+Yours&family=WindSong:wght@400;500&display=swap');
+    </style>
 </head>
 <body>
     <!-- navbar start -->
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid" align="center">
-        <a class="navbar-brand" href="../../views/dashboard">Perfumery Review</a>
+        <a class="navbar-brand" href="../../views/dashboard" style="font-family: WindSong, cursive;">Perfumery Review</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -97,7 +106,7 @@ if (isset($_POST['submit_login'])){
     <div class="card">
         <div class="card-footer">
         <marquee>
-            <address>&copy;2024 - All Right Reserved</address>
+            <address style="font-family: WindSong, cursive;">&copy;2024 - All Right Reserved</address>
         </marquee>
         </div>
     </div>

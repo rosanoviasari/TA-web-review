@@ -2,10 +2,16 @@
 require '../../controller/DashboardController.php';
 session_start();
 $isLogin = isset($_SESSION['username']); 
-if($isLogin){ $username = $_SESSION['username'];}
+if($isLogin){$username = $_SESSION['username'];}
+else{$username = "Click for Login";}
 $data = getProduct();
 $firstCarousel = array_shift($data);
-
+function logout(){
+    session_destroy();
+}
+if (isset($_GET['action']) && $_GET['action'] === 'logout') {
+    logout();
+}
 
 
 //var_dump ($_SESSION);
@@ -19,27 +25,34 @@ $firstCarousel = array_shift($data);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfumery Review</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../asset/style/style.css">
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Lavishly+Yours&family=WindSong:wght@400;500&display=swap');
+    </style>
 </head>
 <body>
     <!-- navbar start -->
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-        <a class="navbar-brand" href="">Perfumery Review</a>
+        <a class="navbar-brand" style="font-family: WindSong, cursive;">Perfumery Review</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ms-auto">
             <li class="nav-item dropdown">
-                <a class="nav-link" href="../../views/user/login/index.php">hi <?= $username?>!</a>
+                <a class="nav-link active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><?= $username?></a>
                 <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="../../views/dashboard">Logout</a></li>
+                    <li><a class="dropdown-item" href="../../views/user/login">Login</a></li>
+                    <li><a class="dropdown-item" href="dashboard?action=logout">Logout</a></li>
                 </ul>
             </li>
+            </ul>
         </div>
         </div>
     </nav>
     <!-- navbar end -->
+     <!-- content start -->
     <div class="content-section">
         <div id="carouselExample" class="carousel slide">
             <div class="carousel-inner" align="center">
@@ -48,8 +61,8 @@ $firstCarousel = array_shift($data);
                         <div class="card-body">
                             <div class="row mb-4" align="center">
                                 <!-- ini baris pertama -->
-                                <div class="col-sm-4 col-lg-4">
-                                    <div class="card" style="width: 18rem;" align="center">
+                                <div class="col-sm-4 col-lg-4" align="center">
+                                    <div class="card" style="width: 25rem;" style="align: center;">
                                         <img src="../../asset/gambar/<?= $firstCarousel['gambar_product'];?>" class="card-img-top" alt="...">
                                         <div class="card-body">
                                         <h5 class="card-title"><?= $firstCarousel['nama_product'];?></h5>
@@ -71,7 +84,7 @@ $firstCarousel = array_shift($data);
                             <div class="row mb-4">
                                 <!-- ini baris pertama -->
                                 <div class="col-sm-4 col-lg-4">
-                                    <div class="card" style="width: 18rem;">
+                                    <div class="card" style="width: 25rem;">
                                         <img src="../../asset/gambar/<?= $item['gambar_product'];?>" class="card-img-top" alt="...">
                                         <div class="card-body">
                                         <h5 class="card-title"><?= $item['nama_product'];?></h5>
@@ -103,7 +116,7 @@ $firstCarousel = array_shift($data);
     <div class="card">
         <div class="card-footer">
         <marquee>
-            <address>&copy;2024 - All Right Reserved</address>
+            <address style="font-family: WindSong, cursive;">&copy;2024 - All Right Reserved</address>
         </marquee>
         </div>
     </div>
