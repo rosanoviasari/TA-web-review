@@ -5,16 +5,18 @@ if (isset($_GET['id'])) {
     $id = (int) $_GET['id'];
     }
 
-
 if (isset($_POST['submit_edit_product'])) {
     $inputkategori = $_POST['select_kategori'];
-    $inputnotes = $_POST['select_notes'];   
-    updateProduct($id,$inputkategori,$inputnotes);
+    $topnotes = $_POST['top_notes'];
+    $middlenotes = $_POST['middle_notes'];
+    $basenotes = $_POST['base_notes'];
+    updateProduct($id, $inputkategori, $topnotes, $middlenotes, $basenotes);
     header ('Location: ../../views/detail?id='.$id);
 }
 $dataProductReview = getProductById($id);
 $kategori = getKategoriFromDatabase();
 $notes = getNotesFromDatabase();
+
 
 ?>
 
@@ -90,8 +92,28 @@ $notes = getNotesFromDatabase();
                                             </div>
                                             <div class="row" align="center">
                                                 <div class="input-group mb-3">
-                                                    <span class="input-group-text" id="inputGroup-sizing-default">Parfume Notes</span>
-                                                    <select class="form-select" name="select_notes">
+                                                    <span class="input-group-text" id="inputGroup-sizing-default">Top Notes</span>
+                                                    <select class="form-select" name="top_notes">
+                                                        <?php foreach($notes as $option): ?>
+                                                            <option value="<?= $option['id']?>">
+                                                                <?= $option['notes_parfume'];?>
+                                                            </option>
+                                                        <?php endforeach; ?>
+                                                    </select>
+                                                </div>
+                                                <div class="input-group mb-3">
+                                                    <span class="input-group-text" id="inputGroup-sizing-default">Middle Notes</span>
+                                                    <select class="form-select" name="middle_notes">
+                                                        <?php foreach($notes as $option): ?>
+                                                            <option value="<?= $option['id']?>">
+                                                                <?= $option['notes_parfume'];?>
+                                                            </option>
+                                                        <?php endforeach; ?>
+                                                    </select>
+                                                </div>
+                                                <div class="input-group mb-3">
+                                                    <span class="input-group-text" id="inputGroup-sizing-default">Base Notes</span>
+                                                    <select class="form-select" name="base_notes">
                                                         <?php foreach($notes as $option): ?>
                                                             <option value="<?= $option['id']?>">
                                                                 <?= $option['notes_parfume'];?>

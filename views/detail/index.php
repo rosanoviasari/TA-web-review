@@ -52,13 +52,14 @@ $dataProductReview = getProductById($id);
             <div class="row">
                 <div class="col-5">
                     <div class="card" style="width: 25rem;">
-                        <?php foreach ($dataProductReview as $p): ?>
+                        <?php 
+                        foreach ($dataProductReview as $p): ?>
                             <img src="../../asset/gambar/<?= $p['gambar_product'];?>" class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <h5 class="card-title"><?= $p['kategori'];?></h5>
                                     <h5 class="card-title"><?= $p['nama_brand'];?></h5>
                                     <h5 class="card-title"><?= $p['nama_product'];?></h5>
-                                    <p class="card-text">Notes : <?= $p['nama_notes_parfume'];?></p>
+                                    <p class="card-text">Notes : <?= $p['Top_Notes'];?>, <?= $p['Middle_Notes'];?>, <?= $p['Base_Notes'];?>  </p>
                                     <a href="../../views/edit-product?id=<?=$p['id'];?>" type="button" class="btn btn-primary">Edit product</a>
                                 </div>
                         <?php endforeach;?>

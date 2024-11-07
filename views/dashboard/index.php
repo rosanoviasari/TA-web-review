@@ -54,13 +54,13 @@ if (isset($_GET['action']) && $_GET['action'] === 'logout') {
     <!-- navbar end -->
      <!-- content start -->
     <div class="content-section">
+        <!-- carousel start -->
         <div id="carouselExample" class="carousel slide">
             <div class="carousel-inner" align="center">
             <div class="carousel-item active" align="center">
                     <div class="card">
                         <div class="card-body">
                             <div class="row mb-4" align="center">
-                                <!-- ini baris pertama -->
                                 <div class="col-sm-4 col-lg-4" align="center">
                                     <div class="card" style="width: 25rem;" style="align: center;">
                                         <img src="../../asset/gambar/<?= $firstCarousel['gambar_product'];?>" class="card-img-top" alt="...">
@@ -82,7 +82,6 @@ if (isset($_GET['action']) && $_GET['action'] === 'logout') {
                     <div class="card">
                         <div class="card-body">
                             <div class="row mb-4">
-                                <!-- ini baris pertama -->
                                 <div class="col-sm-4 col-lg-4">
                                     <div class="card" style="width: 25rem;">
                                         <img src="../../asset/gambar/<?= $item['gambar_product'];?>" class="card-img-top" alt="...">
@@ -109,8 +108,9 @@ if (isset($_GET['action']) && $_GET['action'] === 'logout') {
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
         </button>
-        </div>
+        </div> <!-- carousel end -->
     </div>
+    <!-- content end -->
 
     <!--Footer Start-->
     <div class="card">

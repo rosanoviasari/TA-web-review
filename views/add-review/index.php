@@ -5,6 +5,7 @@ if (isset($_GET['id'])) {
     $id = (int) $_GET['id'];
     }
 $dataProductReview = getProductById($id);
+$avatar = getAvatarById($id);
 
 if (isset($_POST['submit_new_review'])) {
     
@@ -68,7 +69,7 @@ if (isset($_POST['submit_new_review'])) {
                                     <h1 class="text-bold mb-4">Add New Review</h1>
                                     <hr class="mt-4 mb-2">
                                 </div>
-                                <div class="col-5">
+                                <div class="col-4">
                                     <div class="container text-center mb-4">
                                         <div class="row">
                                             <div class="col">
@@ -86,7 +87,17 @@ if (isset($_POST['submit_new_review'])) {
                                         </div>
                                     </div> 
                                 </div>
-                                <div class="col-7">
+                                <div class="col-4">
+                                    <span class="input-group-text">Pilih Avatar</span>
+                                        <select class="form-select" aria-label="Default select example">
+                                        <?php foreach($avatar as $option): ?>
+                                            <option selected></option>
+                                            <option value="<?= $option['id'];?>"><?= $option['avatar'];?></option>
+                                        
+                                        </select>
+                                        <?php endforeach;?>
+                                </div>
+                                <div class="col-4">
                                     <span class="input-group-text">Review</span>
                                     <textarea class="form-control" name="txt_review" aria-label="With textarea"></textarea>
                                     <div class="row">

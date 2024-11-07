@@ -13,7 +13,6 @@ function getReviewById($id){
     $res = myquery($query);
     return $res;
 }
-
 function getEditReviewById($id){
     $query = "SELECT
     tb_review.id, 
@@ -27,13 +26,11 @@ function getEditReviewById($id){
     $res = myquery($query);
     return $res;
 }
-
 function insertReview($product, $username, $review) {
     $query = "INSERT INTO tb_review (product, username, review) VALUES ('$product', '$username', '$review')";
     $res = myquery($query);
     return $res;
 }
-
 function deleteReviewById($id){
     $query = "DELETE FROM tb_review WHERE tb_review.id = $id";
     $res = myquery($query);
@@ -43,6 +40,13 @@ function updateReviewById($id, $review){
     $query = "UPDATE tb_review 
     SET review = '$review'
     WHERE tb_review.id = $id";
+    $res = myquery($query);
+    return $res;
+}
+function getAvatarById($id){
+    $query = "SELECT tb_avatar.id, tb_avatar.avatar 
+    FROM tb_avatar
+    WHERE tb.avatar.id = $id";
     $res = myquery($query);
     return $res;
 }
